@@ -163,13 +163,12 @@ function App() {
       </Row>
 
 
-  
 
 
-
-        {!load ? <div className="Load-Screen" >
-          <Spinner variant="light" className="Load-Screen-Icon" animation="border" role="status">
-          {/* <span className="visually-hidden" >Loading...</span> */}
+        {!load ? 
+        <div className="Load-Screen" >
+          <Spinner variant="light"  animation="border" role="status" id="Load-Screen-Icon" >
+          <span className="visually-hidden" >Loading...</span>
         </Spinner>
         </div>
           : <div ></div>}
