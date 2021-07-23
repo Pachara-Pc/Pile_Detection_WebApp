@@ -124,6 +124,7 @@ function App() {
   return (
 
     <div>
+      
       <div className="Header">
         ระบบตรวจจับเสาเข็ม
       </div>
@@ -162,17 +163,18 @@ function App() {
       </Row>
 
 
-      <Row  sm={2} xl={4} >
+  
 
 
 
-        {!load ? <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
+        {!load ? <div className="Load-Screen" >
+          <Spinner variant="light" className="Load-Screen-Icon" animation="border" role="status">
+          {/* <span className="visually-hidden" >Loading...</span> */}
         </Spinner>
-          : <div></div>}
+        </div>
+          : <div ></div>}
 
-      </Row>
-
+ 
       
 
     </div>

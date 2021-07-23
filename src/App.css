@@ -42,7 +42,24 @@ input[type="file"] {
   border-top-right-radius: 10px;
   
 }
-
+.Load-Screen{
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background: #000;
+  opacity: 0.3;
+  height:  100%;
+  width: 100%;
+}
+.Load-Screen-Icon{
+  position: fixed;
+  /* background-color: white; */
+  font-size: 30px;
+  top: 50%;
+  left: 50%;
+  height:  100%;
+  width: 100%;
+}
 
 .Show-Image{
   
