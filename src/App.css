@@ -32,11 +32,12 @@ input[type="file"] {
 .Text-Count{
   font-family: "THSARABUN";
   font-size: 30px;
+  background: rgb(24, 155, 6);
+  /* margin: auto; */
   color: white;
   width: auto;
   padding: 10px;
   background-color: blue;
-  background: #000;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   
