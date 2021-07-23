@@ -1,38 +1,73 @@
-.App {
+
+input[type="file"] {
+  display: none;
+}
+
+.button-Upload{
   text-align: center;
+  
+}
+.Button-Upload-Margin{
+  /* margin-top: 20px; */
+  margin: 20px 0px 20px 0px;
+}
+.Position-Img{
+ 
+  text-align: center;
+
+}
+.Position-Img-Dectect{
+  text-align: center;
+  /* margin: 0px 20px 20px 20px; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Gallery{
+  /* margin: 20px; */
+  margin: 20px ;
+  /* border: 2px solid #000 ; */
+  float: left;
+  width: 350px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.Text-Count{
+  font-family: "THSARABUN";
+  font-size: 30px;
   color: white;
+  width: auto;
+  padding: 10px;
+  background-color: blue;
+  background: #000;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
 }
 
-.App-link {
-  color: #61dafb;
+
+.Show-Image{
+  
+  width: 400px;
+  height: 400px;
+  margin: 0px 20px 20px 20px;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Show-Image-Dectect{
+  width: 100%;
+  height: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/* .result{
+  justify-content: center;
+  text-align: center;
+} */
+
+.Header{
+  font-family: "THSARABUN";
+  font-size: 50px;
+  text-align: center;
+  
+  /* width: auto; */
+  color: white;
+  background: rgb(46, 79, 224);
 }

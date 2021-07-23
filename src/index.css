@@ -7,6 +7,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+@font-face {
+  font-family: "THSARABUN";
+  src: local("THSARABUN"),
+   url("./fonts/THSARABUN.TTF") format("truetype");
+  
+  }
+
+  @font-face {
+    font-family: "BAUHS93";
+    src: local("BAUHS93"),
+     url("./fonts/BAUHS93.TTF") format("truetype");
+    
+    }
+  
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
