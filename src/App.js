@@ -1,7 +1,8 @@
-import { react } from '@babel/types';
-import { Row, Col, Button,Image, Form, Container, Card, Spinner } from 'react-bootstrap'
-import { useState, useEffect } from 'react';
+import { Row, Col, Button, Card, Spinner } from 'react-bootstrap'
+import { useState } from 'react';
 import axios from 'axios';
+import camera from './icon/camera.png'
+import drone from './icon/drone.png'
 import './App.css'
 var FormData = require('form-data');
 function App() {
@@ -11,12 +12,12 @@ function App() {
   const [base64, setBase64] = useState([])
   const [done, setDone] = useState(true)
   const [load, setLoad] = useState(true)
-  const render = (img) => {
-    return
-    <div>
-      <img src={URL.createObjectURL(img)} />
-    </div>
+  const [toggleMode,setToggelmode] = useState(true)
 
+
+
+  const Mode = () =>{
+    return toggleMode?"http://localhost:8000/image/humanVeiw":"http://localhost:8000/image/droneVeiw"
   }
 
   const postimage = (img) => {
@@ -30,7 +31,7 @@ function App() {
     // formdata.append('images',img)
     var config = {
       method: 'post',
-      url: "http://localhost:8000/image",
+      url: Mode(),
       headers: { "Content-Type": "form-data" },
       data: data
     };
@@ -39,13 +40,14 @@ function App() {
       .then(function (response) {
 
         // const result =  JSON.stringify()
-        const x = setBase64(response.data)
+        setBase64(response.data)
         //  console.log(response.data);
 
 
       }).then(() => {
         setDone(false)
         setLoad(true)
+        setImages([])
         setSelectedFiles([])
       })
 
@@ -58,10 +60,7 @@ function App() {
 
   }
 
-  const checkimages = () => {
-    console.log(images);
-  }
-
+ 
   const handleImage = (e) => {
     if (e.target.files.length >= 1) {
       // setDone(!done)
@@ -81,7 +80,7 @@ function App() {
   }
 
   function Render_Image() {
-    if (images.length != 0) {
+    if (images.length !== 0) {
       setLoad(false)
       postimage(images)
     } else {
@@ -91,14 +90,16 @@ function App() {
 
   }
 
-  const Render_Dectect = ({ data }) => {
+  const colorTag = (num) => { return num === 0 ? '#DD3712' : '#189b06' }
+
+  const RenderDectect = ({ data }) => {
     // console.log(data);
     return data.map(e => {
 
       return <Col  >
         
-        <Card  style={{margin:'20px',backgroundColor:'#189b06'}}   >
-          
+        <Card  style={{margin:'20px',backgroundColor:colorTag(parseInt(e.count))}}   >
+        
           <Card.Header className="Text-Count">นับเสาเข็มได้ {e.count} ต้น</Card.Header>
           <Card.Img variant="top" src={`data:image/png;base64,${e.img}`} key={e.img} width="400px" height="auto" onClick={() => { console.log(e.count); }}  />
         </Card>
@@ -124,17 +125,23 @@ function App() {
   return (
 
     <div>
-      
-      <div className="Header">
+      <Row  className="Header" >
+        <Col sm={9} md={10} xl={11} >
         ระบบตรวจจับเสาเข็ม
-      </div>
+        </Col>
+
+        <Col sm={3} md={2} xl={1}>
+          {toggleMode?<img class="Icon"src={camera} width="90px" alt="" onClick={()=>setToggelmode(!toggleMode)} />:<img class="Icon"src={drone} width="90px" alt="" onClick={()=>setToggelmode(!toggleMode)} /> }
+        </Col>
+      </Row>
+      
 
 
 
       <Row  >
         <Col className="button-Upload" >
           <Button variant="primary" className="Button-Upload-Margin">
-            <label>
+            <label style={{cursor: "pointer"}}>
               Upload Images
               <input type="file" multiple onChange={handleImage} />
             </label>
@@ -145,7 +152,7 @@ function App() {
         <Col className="button-Upload" >
 
           <Button variant="primary" className="Button-Upload-Margin" onClick={Render_Image} >
-            <label>
+            <label style={{cursor: "pointer"}} >
               Render Images
             </label>
           </Button>
@@ -159,7 +166,7 @@ function App() {
       <Row xs={1} md={2} xl={4} >
 
         {renderPhotos(selectedFiles)}
-        {!done ? <Render_Dectect data={base64} /> : <div></div>}
+        {!done ? <RenderDectect data={base64} /> : null}
       </Row>
 
 
